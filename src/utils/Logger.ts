@@ -1,25 +1,31 @@
 import chalk from "chalk";
 
 class Logger {
-  private static log(message: String) {
+  static log(message: string | undefined) {
     const date = new Date().toLocaleString();
     console.log(`${date} ${message}`);
   }
 
-  static request(message: String) {
+  static request(message: string | undefined) {
     Logger.log(chalk.green(`[REQUEST] ${message}`));
   }
 
-  static info(message: String) {
+  static info(message: string | undefined) {
     Logger.log(chalk.blue(`[INFO] ${message}`));
   }
 
-  static warning(message: String) {
+  static warning(message: string | undefined) {
     Logger.log(chalk.yellow(`[WARNING] ${message}`));
   }
 
-  static error(message: String) {
-    console.log(chalk.red(`[ERROR] ${message}`));
+  static error(message: string | undefined) {
+    Logger.log(chalk.red(`[ERROR] ${message}`));
+  }
+
+  static debug(message: string | undefined) {
+    if (process.env.NODE_ENV === "development") {
+      Logger.log(chalk.magentaBright(`[DEBUG] ${message}`));
+    }
   }
 }
 
