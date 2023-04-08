@@ -1,4 +1,4 @@
-import { AppError } from "../../http/errors/AppError";
+import { AppError } from "../../shared/http/errors/AppError";
 
 export default class InvalidEnvVariablesError extends AppError {
   constructor() {

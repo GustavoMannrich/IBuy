@@ -12,7 +12,7 @@ class Logger {
   }
 
   static info(message?: any, ...optionalParams: any[]) {
-    Logger.log(chalk.blue(`[INFO] ${message}`), ...optionalParams);
+    Logger.log(chalk.cyanBright(`[INFO] ${message}`), ...optionalParams);
   }
 
   static warning(message?: any, ...optionalParams: any[]) {
