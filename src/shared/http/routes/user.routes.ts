@@ -1,9 +1,10 @@
 import { Request, Response, Router } from "express";
+import SaveUserController from "../../../modules/users/user/controllers/SaveUserController";
 
 const userRouter = Router();
 
-userRouter.get("/", (request: Request, response: Response) => {
-  response.status(200).json({ message: "nice" });
-});
+const saveUserController = new SaveUserController();
+
+userRouter.post("/", saveUserController.handle);
 
 export default userRouter;

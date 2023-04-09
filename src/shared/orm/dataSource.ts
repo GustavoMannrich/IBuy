@@ -1,7 +1,7 @@
 import { DataSource } from "typeorm";
-import { env } from "../../env";
+import User from "../../modules/users/user/entities/User";
 
-export const AppDataSource = new DataSource({
+export const appDataSource = new DataSource({
   type: "mysql",
   host: "localhost",
   port: 3306,
@@ -9,8 +9,8 @@ export const AppDataSource = new DataSource({
   password: "admin",
   database: "ibuy",
   synchronize: true,
-  logging: env.NODE_ENV !== "prod",
-  entities: [],
+  logging: false, //env.NODE_ENV !== "prod",
+  entities: [User],
   subscribers: [],
-  migrations: [],
+  migrations: ["./src/shared/orm/migrations/*.ts"],
 });

@@ -1,9 +1,9 @@
-import "reflect-metadata";
-import { AppDataSource } from "./dataSource";
+import { appDataSource } from "./dataSource";
 import Logger from "../../utils/Logger";
 
 export function connectToDatabase() {
-  AppDataSource.initialize()
+  appDataSource
+    .initialize()
     .then(() => {
       Logger.info("Database connected!");
     })
