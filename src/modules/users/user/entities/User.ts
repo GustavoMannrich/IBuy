@@ -1,16 +1,25 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import {
+    Column,
+    CreateDateColumn,
+    Entity,
+    PrimaryGeneratedColumn,
+    UpdateDateColumn,
+} from 'typeorm';
 
-@Entity("user")
+@Entity('user')
 export default class User {
-  @PrimaryGeneratedColumn("increment")
-  id: number;
+    @PrimaryGeneratedColumn('increment')
+    id: number;
 
-  @Column("varchar")
-  name: string;
+    @Column('varchar')
+    name: string;
 
-  @CreateDateColumn()
-  created_at: Date;
+    @Column('varchar')
+    cpf_cnpj: string;
 
-  @UpdateDateColumn()
-  updated_at: Date;
+    @CreateDateColumn()
+    created_at: Date;
+
+    @UpdateDateColumn()
+    updated_at: Date;
 }

@@ -1,23 +1,19 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export class CreateUser1680972208968 implements MigrationInterface {
+export class CreateUserProfile1681939993561 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
-        queryRunner.createTable(
+        await queryRunner.createTable(
             new Table({
-                name: 'user',
+                name: 'user_profile',
                 columns: [
                     {
-                        name: 'id',
+                        name: 'user_id',
                         type: 'int',
                         isPrimary: true,
                     },
                     {
-                        name: 'name',
-                        type: 'varchar(200)',
-                    },
-                    {
-                        name: 'cpf_cnpj',
-                        type: 'varchar(14)',
+                        name: 'description',
+                        type: 'varchar(2000)',
                     },
                     {
                         name: 'created_at',
@@ -30,11 +26,21 @@ export class CreateUser1680972208968 implements MigrationInterface {
                         default: 'now()',
                     },
                 ],
+                foreignKeys: [
+                    {
+                        name: 'FKUserProfile',
+                        columnNames: ['user_id'],
+                        referencedTableName: 'user',
+                        referencedColumnNames: ['id'],
+                        onDelete: 'CASCADE',
+                        onUpdate: 'CASCADE',
+                    },
+                ],
             })
         );
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('user');
+        await queryRunner.dropTable('user_profile');
     }
 }
