@@ -2,6 +2,7 @@ import { DataSource } from 'typeorm';
 import User from '../../modules/users/user/entities/User';
 import UserProfile from '../../modules/users/userProfile/entities/UserProfile';
 import { env } from '../../env';
+import Product from '../../modules/products/product/entities/Product';
 
 export const appDataSource = new DataSource({
     type: 'mysql',
@@ -12,7 +13,7 @@ export const appDataSource = new DataSource({
     database: env.DB_NAME,
     synchronize: true,
     logging: false, //env.NODE_ENV !== "prod",
-    entities: [User, UserProfile],
+    entities: [User, UserProfile, Product],
     subscribers: [],
     migrations: ['./src/shared/orm/migrations/*.ts'],
 });
